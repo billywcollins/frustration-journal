@@ -1,0 +1,130 @@
+extends layout
+
+block content
+	.push
+	.card.login.shadow.mb-5
+		.card-body
+			h5.card-title= title
+			form#addEntryForm(method='post', action='/')
+				if entry
+					.form-group
+						label Category
+						.input-group
+							select.custom-select#category-select(name='category' required)
+								option(selected) Choose a category
+								each category in categories
+									option(value=category._id)= category.name
+							.input-group-append
+								button.btn.btn-outline-secondary(type='button' data-toggle='modal' data-target='#addCategory') Add Category
+						if errors
+								each error in errors
+									if error.param == 'category'
+										.small.text-danger= error.msg
+					.form-group
+						label Title
+						input.form-control(type='text' name='title' required placeholder='Enter a Title' value=(entry.title !== '' ? entry.title : ''))
+						if errors
+							each error in errors
+								if error.param == 'title'
+									.small.text-danger= error.msg
+					.form-group
+						label Location
+						input.form-control(type='text' name='location' required placeholder='Where did this happen?' value=(entry.location !== '' ? entry.location : ''))
+						if errors
+								each error in errors
+									if error.param == 'location'
+										.small.text-danger= error.msg
+					.form-group
+						label Description
+						textarea.form-control(type='text' name='description' rows='3' required placeholder='Describe your frustration')= entry.description !== '' ? entry.description : ''
+						if errors
+								each error in errors
+									if error.param == 'description'
+										.small.text-danger= error.msg
+					.form-group
+						label Idea
+						textarea.form-control(type='text' name='idea' rows='3' required placeholder='Any solutions?')= entry.idea !== '' ? entry.idea : ''
+						if errors
+								each error in errors
+									if error.param == 'idea'
+										.small.text-danger= error.msg
+					.form-group
+						label How frustrating?
+						select.form-control(name='size' required)
+							option A little
+							option Somewhat
+							option Very
+						if errors
+								each error in errors
+									if error.param == 'size'
+										.small.text-danger= error.msg
+					button.btn.btn-primary.btn-block(type='submit') Add Entry
+				else
+					.form-group
+						label Category
+						.input-group
+							select.custom-select(name='category' required)
+								option(selected) Choose a category
+								each category in categories
+									option(value=category._id)= category.name
+							.input-group-append
+								button.btn.btn-outline-secondary(type='button' data-toggle='modal' data-target='#addCategory')
+									i(data-feather='plus' height='20' width='20')
+						if errors
+								each error in errors
+									if error.param == 'category'
+										.small.text-danger= error.msg
+					.form-group
+						label Title
+						input.form-control(type='text' name='title' required placeholder='Enter a Title')
+						if errors
+							each error in errors
+								if error.param == 'title'
+									.small.text-danger= error.msg
+					.form-group
+						label Location
+						input.form-control(type='text' name='location' required placeholder='Where did this happen?')
+						if errors
+								each error in errors
+									if error.param == 'location'
+										.small.text-danger= error.msg
+					.form-group
+						label Description
+						textarea.form-control(type='text' name='description' rows='3' required placeholder='Describe your frustration')
+						if errors
+								each error in errors
+									if error.param == 'description'
+										.small.text-danger= error.msg
+					.form-group
+						label Idea
+						textarea.form-control(type='text' name='idea' rows='3' required placeholder='Any solutions?')
+						if errors
+								each error in errors
+									if error.param == 'idea'
+										.small.text-danger= error.msg
+					.form-group
+						label How frustrating?
+						select.form-control(name='size' required)
+							option A little
+							option Somewhat
+							option Very
+						if errors
+								each error in errors
+									if error.param == 'size'
+										.small.text-danger= error.msg
+					button.btn.btn-primary.btn-block(type='submit') Add Entry
+
+	
+	.modal.fade#addCategory(tabindex='-1' role='dialog' aria-labelledby='addCategoryTitle' aria-hidden='true')
+		.modal-dialog(role='document')
+			.modal-content
+				.modal-header
+					h5.modal-title#addCategoryTitle Add New Category
+					button(type='button' class='close' data-dismiss='modal' aria-label='Close')
+						span(aria-hidden='true') &times;
+				.modal-body 
+					.caption.mb-2 Add a new category. Make the name short and sweet
+					form(method='post', action='/add-category')
+						.form-group
+							input.form-control(type='text' placeholder='Category Name' name='name' required)
+						button.btn.btn-primary(type='submit') Create Category

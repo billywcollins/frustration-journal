@@ -1,0 +1,12 @@
+extends layout
+
+block content
+	.push
+	.card.login.shadow
+		.card-body
+			h5.card-title= title
+			!=messages()
+			p.card-text <strong>Email Address:</strong> #{username}
+			p.card-text <strong>Password:</strong> ••••••••••••
+			a.card-link(href='/profile/change-email') Change Email
+			a.card-link(href='/profile/change-password') Change Password

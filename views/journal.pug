@@ -1,0 +1,88 @@
+extends layout
+
+block content
+	.container
+		.push
+		h4.display-4 My Journal
+		!= messages()
+		if filtered
+			.alert.alert-success 
+				| Your results are filtered. 
+				a(href='/journal') Clear filters
+		if entries.length != 0
+			.card-columns
+				each entry in entries
+					.card.shadow
+						.card-body
+							.overline.mb-2
+								i.mr-1(data-feather='filter' width='14' height='14') 
+								| #{entry.category.name}
+							h5.mb-2= entry.title
+							.subtitle-large.mb-3= entry.description
+							.body-text-small.mb-3= entry.idea
+							.card-link 
+								//button.text-button.btn-link.btn(type='button' data-toggle='modal' data-target="#exampleModal" data-title=entry.title data-date=entry.data) View
+								//button.text-button.btn-link.btn(type='button' data-toggle='modal' data-target="#entryModal") View
+								//button.text-button.btn-link.btn(type='button' id='showSomeModal') Show Modal
+								a.text-button.btn-link.btn(href=entry.url) More Details
+			a(href='/add-entry')
+				.btn-fab.shadow
+					i(data-feather='plus')
+
+			button.btn-fab-support.shadow(aria-label='Filter' data-toggle='modal' data-target='#filter')
+				i(data-feather='filter' width='20' height='20')
+		else
+			p.about-text #{title} was created to help you turn your daily frustrations into ideas, solutions, and maybe even companies. Today's most innovative companies started because of a frustration some motivated person noticed in their world. Instead of ranting and raving, that person cataloged their frustration and came up with a way to solve the problem. It starts with a single entry. Ready to go?
+			a.btn.btn-primary.mt-3(href='/add-entry') Add First Entry
+
+		.modal.fade#filter(tabindex='-1' role='dialog' aria-labelledby='filterTitle' aria-hidden='true')
+			.modal-dialog(role='document')
+				.modal-content
+					.modal-header
+						h5.modal-title#filterTitle Filter by Category
+						button(type='button' class='close' data-dismiss='modal' aria-label='Close')
+							span(aria-hidden='true') &times;
+					.modal-body
+						form(method='post', action='/journal')
+							each category in categories
+								.form-check
+									input.form-check-input(value=category._id type='checkbox' id=category.name name='category')
+									label.form-check-label(for=category.name)= category.name
+							button.btn.btn-primary.mt-3(type='submit') Filter
+
+		.modal.fade#addEntry(tabindex='-1' role='dialog' aria-labelledby='addEntryTitle' aria-hidden='true')
+			.modal-dialog(role='document')
+				.modal-content
+					.modal-header
+						h5.modal-title#addEntryTitle Add an Entry
+						button(type='button' class='close' data-dismiss='modal' aria-label='Close')
+							span(aria-hidden='true') &times;
+					.modal-body 
+						.caption.mb-2 Use these form fields to add a new entry. Be as descriptive as you can be.
+						form(method='post', action='/')
+							.form-group
+								input.form-control(type='text' placeholder='Enter a short title' name='title' required)
+							.form-group
+								input.form-control(type='text' placeholder='Where did it happen?' name='location' required)
+							.form-group
+								textarea.form-control(type='text' placeholder='Describe your frustration.' name='description' rows='3' required)
+							.form-group
+								textarea.form-control(type='text' placeholder='Any possible solutions?' name='idea' rows='3' required)
+							.form-group
+								select.form-control(name='size' required)
+									option(selected='true') A little
+									option Somewhat
+									option Very
+							button.btn.btn-primary(type='submit') Add Entry
+
+		.modal.fade#entryModal(tabindex='-1' role='dialog' aria-labelledby='exampleModalTitle' aria-hidden='true')
+			.modal-dialog(role='document')
+				.modal-content
+					.modal-header
+						h5.modal-title#entryleModalTitle Modal Title
+						button(type='button' class='close' data-dismiss='modal' aria-label='Close')
+							span(aria-hidden='true') &times;
+					.modal-body ...
+					.modal-footer
+						button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+						button.btn.btn-primary(type='button') Save changes

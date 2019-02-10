@@ -1,0 +1,46 @@
+extends layout
+
+block content
+	section.hero-section
+		.hero-section-copy
+			h2 Welcome to #{title}
+			h6 #{title} is where your ideas come to life.
+			a.btn.btn-primary.mt-3(href='/register') Create Your Journal
+	section.login-section
+			.card.shadow
+				.card-body
+					h5.card-title What is #{title}?
+					p.card-text Have you ever though that just having the <em>right</em> idea could make all the difference? Today's most successful people observe problems in everyday life and commit their time to solving them. Rather than struggling to invent the <em>right</em> idea, start tracking the problems you encounter every day. Then, solve them.
+					a.btn.btn-primary.mr-2(href='/register') Register
+					a.btn.btn-outline-primary(href='/login') Log In 
+
+
+	section.about-section
+		.about-section-copy
+			h5 How does #{title} work?
+		.row.m-4
+			.col-md-4
+				.card.shadow.mb-2
+					.card-body
+						i.mb-2(data-feather='eye')
+						h6.card-title Observe your world
+						p.card-text Great ideas begin when you start looking at the world around you. What's something that nags at your persistently? What are people around you complaining about? 
+			.col-md-4
+				.card.shadow.mb-2
+					.card-body
+						i.mb-2(data-feather='edit')
+						h6.card-title Create a log
+						p.card-text If you don't walk around with a pen and paper, it can be tough to remember your great ideas. With #{title}, your next entry is one tap away.
+			.col-md-4
+				.card.shadow.mb-2
+					.card-body
+						i.mb-2(data-feather='send')
+						h6.card-title Just start doing
+						p.card-text We started #{title} because we were tired of not putting our energy toward doing something. Review your journal and do something about it.
+
+
+		//.cta
+			//a.btn.btn-primary.cta(href='/register') Create Your Journal
+	footer
+		.footer-copy.m-3
+			.caption &copy; 2019 #{title}  ¯\_(ツ)_/¯   Built by <a href='http://billycollins.me' target='_blank'> Billy Collins</a>

@@ -1,0 +1,30 @@
+extends layout
+
+block content
+	.push
+	.card.login.shadow
+		.card-body
+			h5.card-title= title
+			form
+				.form-group
+					label Title
+					input.form-control(type='text' name='title' required value=entry.title readonly)
+				.form-group
+					label Category
+					input.form-control(type='text' name='category' value=entry.category.name readonly)
+				.form-group
+					label Location
+					input.form-control(type='text' name='location' required value=entry.location readonly)
+				.form-group
+					label Description
+					textarea.form-control(type='text' name='description' rows='3' required readonly)= entry.description
+				.form-group
+					label Idea
+					textarea.form-control(type='text' name='idea' rows='3' required readonly)= entry.idea
+				.form-group
+					label How frustrating?
+					select.form-control(name='size' required readonly)
+						option(selected=(entry.size == 'A little' ? 'true' : '')) A little
+						option(selected=(entry.size == 'Somewhat' ? 'true' : '')) Somewhat
+						option(selected=(entry.size == 'Very' ? 'true' : '')) Very
+				a.btn.btn-secondary.btn-block(href='/journal' role='button') Close

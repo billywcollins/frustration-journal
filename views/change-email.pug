@@ -1,0 +1,18 @@
+extends layout
+
+block content
+	.push
+	.card.login.shadow
+		.card-body
+			h5.card-title= title
+			form(method='post', action='/profile/change-email')
+				.form-group
+					label Current Email Address
+					input.form-control(type='email' name='username' value=username readonly)
+				.form-group
+					label New Email Address
+					input.form-control(type='email' name='new_username' required placeholder='Enter new email')
+				.form-group
+					label Confirm New Email Address
+					input.form-control(type='email' name='match_new_username' required placeholder='Must match new email')
+				button.btn.btn-primary(type='submit') Change Email

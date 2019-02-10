@@ -1,0 +1,26 @@
+extends layout
+
+block content
+	section.register-section
+		.card.login
+			.card-body
+				h5.card-title= title
+				if field
+					.alert.alert-warning= message
+				form(method='post', action='/register')
+					.form-group
+						input.form-control(type="text" placeholder="Email Address" name="username")
+						if errors
+							for error in errors
+								if error.param == 'username'
+									.small.text-danger.mt-2.ml-1= error.msg
+					.form-group
+						input.form-control(type="password" placeholder="Password" name="password")
+						if errors
+							for error in errors
+								if error.param == 'password'
+									.small.text-danger.mt-2.ml-1= error.msg
+					button.btn.btn-secondary.btn-block(type="submit") Create Account
+		.register-cta
+			p
+				a(href='/login') Log In
