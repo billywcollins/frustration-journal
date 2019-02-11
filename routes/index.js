@@ -334,4 +334,8 @@ router.post('/profile/change-password', ensureAuthenticated, [
 		// } 
 })
 
+router.get('/.well-known/acme-challenge/:content', function(req, res) {
+  res.send('H7XvQbGtFhOLJH2FxRS0HNzex1xLdjOafggbc0laHcg.qW9S7vVXXbQU1qSKWXyAI014ehFB1EfsSqdMQ4sBxtA')
+})
+
 module.exports = router;
