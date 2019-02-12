@@ -14,7 +14,7 @@ h1, h2, h3, h4, h5, h6, p {
 	font-family: Roboto, "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-h1, h2 {
+/*h1, h2 {
 	font-weight: 300;
 }
 
@@ -34,12 +34,12 @@ h3 {
 	font-size: 48px;
 }
 
-/*h4 {
+h4 {
 	font-size: 34px; 
 	font-weight: 800;
 	margin-bottom: 1rem;
 	margin-left: .5rem;
-}*/
+}
 
 h5 {
 	font-size: 24px;
@@ -47,7 +47,7 @@ h5 {
 
 h6 {
 	font-size: 20px;
-}
+}*/
 
 p {
 

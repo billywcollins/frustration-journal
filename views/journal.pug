@@ -3,7 +3,7 @@ extends layout
 block content
 	.container
 		.push
-		h4.display-4 My Journal
+		h1 My Journal
 		!= messages()
 		if filtered
 			.alert.alert-success 
@@ -14,9 +14,7 @@ block content
 				each entry in entries
 					.card.shadow
 						.card-body
-							.overline.mb-2
-								i.mr-1(data-feather='filter' width='14' height='14') 
-								| #{entry.category.name}
+							.overline.mb-2= entry.category.name
 							h5.mb-2= entry.title
 							.entry-description.subtitle-large.mb-3= entry.description
 							.entry-idea.body-text-small.mb-3= entry.idea
