@@ -47,6 +47,14 @@ router.get('/journal/:id', ensureAuthenticated, function(req, res, next) {
 	})
 })
 
+router.post('/delete', ensureAuthenticated, function(req, res, next) {
+	Entry.findByIdAndRemove(req.body.entryid, function(err) {
+		if (err) { return next(err);}
+		req.flash('success', 'Your entry was successfully deleted.')
+		res.redirect('/journal');
+	})
+})
+
 // Filter a user's entries by category
 
 router.post('/journal', ensureAuthenticated, function(req, res, next) {
@@ -156,6 +164,8 @@ router.post('/',
 
 })
 
+//** REGISTER AND AUTH **//
+
 router.get('/login', function(req, res, next) {
 	res.render('login', {title: 'Login'});
 })
@@ -248,6 +258,8 @@ router.get('/logout', function(req, res) {
 	req.flash('success', 'You were logged out.');
 	res.redirect('/login');
 });
+
+//** PROFILE **//
 
 router.get('/profile', ensureAuthenticated, function(req, res, next) {
 	var username = req.user.username;

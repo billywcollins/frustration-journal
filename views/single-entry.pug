@@ -28,3 +28,7 @@ block content
 						option(selected=(entry.size == 'Somewhat' ? 'true' : '')) Somewhat
 						option(selected=(entry.size == 'Very' ? 'true' : '')) Very
 				a.btn.btn-secondary.btn-block(href='/journal' role='button') Close
+			form(method='post', action='/delete')
+				.form-group
+					input#entryid.form-control(type='hidden' name='entryid' required='true' value=entry._id)
+				button.btn.btn-link.btn-block(type='submit') Delete
