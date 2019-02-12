@@ -258,6 +258,27 @@ button:hover {
     cursor: pointer;
 }
 
+.container {
+	min-width: 95vw !important;
+}
+
+/* control column display on modile devices */
+
+@media screen and (max-width: 576px) {
+
+	.card-columns {
+		column-count: 2;
+	}
+
+	.card-columns .card {
+		display: inline-block !important;
+	}
+
+	.entry-description, .entry-idea {
+		display: none;
+	}
+}
+
 @media screen and (min-width: 768px) {
 	.hero-section {
 		background: #000000 url("../images/background-1.jpeg") no-repeat right bottom;
@@ -327,4 +348,14 @@ button:hover {
 		max-width: 45vw;
 	}
 
+	.card-columns {
+		column-count: 3;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.container {
+		min-width: 80vw !important;
+		max-width: 80vw !important;
+	}
 }

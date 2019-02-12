@@ -18,12 +18,9 @@ block content
 								i.mr-1(data-feather='filter' width='14' height='14') 
 								| #{entry.category.name}
 							h5.mb-2= entry.title
-							.subtitle-large.mb-3= entry.description
-							.body-text-small.mb-3= entry.idea
+							.entry-description.subtitle-large.mb-3= entry.description
+							.entry-idea.body-text-small.mb-3= entry.idea
 							.card-link 
-								//button.text-button.btn-link.btn(type='button' data-toggle='modal' data-target="#exampleModal" data-title=entry.title data-date=entry.data) View
-								//button.text-button.btn-link.btn(type='button' data-toggle='modal' data-target="#entryModal") View
-								//button.text-button.btn-link.btn(type='button' id='showSomeModal') Show Modal
 								a.text-button.btn-link.btn(href=entry.url) More Details
 			a(href='/add-entry')
 				.btn-fab.shadow
