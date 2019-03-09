@@ -4,15 +4,16 @@ block content
 	section.hero-section
 		.hero-section-copy
 			h2 Welcome to #{title}
-			h6 #{title} is where your ideas come to life.
+			.subtitle-large #{title} is where your ideas come to life.
 			a.btn.btn-primary.mt-3(href='/register') Create Your Journal
+		
 	section.login-section
-			.card.shadow
-				.card-body
-					h5.card-title What is #{title}?
-					p.card-text Have you ever though that just having the <em>right</em> idea could make all the difference? Today's most successful people observe problems in everyday life and commit their time to solving them. Rather than struggling to invent the <em>right</em> idea, start tracking the problems you encounter every day. Then, solve them.
-					a.btn.btn-primary.mr-2(href='/register') Register
-					a.btn.btn-outline-primary(href='/login') Log In 
+		.card.shadow
+			.card-body
+				h5.card-title What is #{title}?
+				p.card-text Have you ever thought that just having the <em>right</em> idea could make all the difference? Today's most successful people observe problems in everyday life and commit their time to solving them. Rather than struggling to invent the <em>right</em> idea, start tracking the problems you encounter every day. Then, solve them.
+				a.btn.btn-primary.mr-2(href='/register') Register
+				a.btn.btn-outline-primary(href='/login') Log In 
 
 
 	section.about-section

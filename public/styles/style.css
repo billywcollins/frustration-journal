@@ -5,7 +5,7 @@ body {
 }
 
 .container-fluid {
-	padding: 0 !important;
+	padding: 0 0 5rem 0 !important;
 }
 
 /*** FONTS ***/
@@ -48,6 +48,10 @@ h5 {
 h6 {
 	font-size: 20px;
 }*/
+
+h5.entry-title {
+
+}
 
 p {
 
@@ -109,7 +113,7 @@ a:hover {
 	background-color: #007bff;
 	color: #fff;
 	position: fixed;
-	bottom: 1rem;
+	bottom: 4.5rem;
 	right: 1rem;
 	padding: 1rem;
 }
@@ -121,9 +125,22 @@ a:hover {
 	background-color: #33BBFF;
 	color: #fff;
 	position: fixed;
-	bottom: 5rem;
+	bottom: 8.5rem;
 	right: 1.5rem;
 	padding: .45rem .6rem;
+}
+
+.btn-fab-support:focus {
+	outline: 0;
+}
+
+.btn-filter {
+	border: none !important;
+	background-color: rgba(255, 255, 255, 0);
+}
+
+.btn-filter:focus {
+	outline: 0 !important;
 }
 
 .welcome {
@@ -176,6 +193,10 @@ ul.success li {
 	margin: 0 auto;
 }
 
+.nav-fill {
+	width: 85% !important;
+}
+
 .nav-link {
 	margin: 0 1rem;
 }
@@ -190,6 +211,8 @@ ul.success li {
 .hero-section {
 	background: #000000 url("../images/background-1.jpeg") no-repeat right bottom;
 	background-size: cover;
+	padding: 7rem 0 3rem;
+	height:70vh;
 }
 
 .login-page-section {
@@ -198,11 +221,11 @@ ul.success li {
 }
 
 .register-section {
-	background: #000000 url("../images/login-background.jpeg") no-repeat right bottom;
+	background: #000000 url("../images/login-background.jpeg") no-repeat left bottom;
 	background-size: cover;
 }
 
-.hero-section, .login-page-section, .register-section {
+.login-page-section, .register-section {
 	padding: 7rem 0 3rem;
 	height: 100vh;
 }
