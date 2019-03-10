@@ -9,18 +9,30 @@ block content
 					.alert.alert-warning= message
 				form(method='post', action='/register')
 					.form-group
-						input.form-control(type="text" placeholder="Email Address" name="username")
+						input.form-control(type="text" placeholder="Email Address" name="username" required)
 						if errors
 							for error in errors
 								if error.param == 'username'
 									.small.text-danger.mt-2.ml-1= error.msg
 					.form-group
-						input.form-control(type="password" placeholder="Password" name="password")
+						input.form-control(type="password" placeholder="Password" name="password" required)
 						if errors
 							for error in errors
 								if error.param == 'password'
 									.small.text-danger.mt-2.ml-1= error.msg
+					.form-group.form-check
+						input.form-check-input(type='checkbox' required)
+						label.form-check-label I accept the #[a(href='#terms' data-toggle='modal' data-target='#terms') terms and conditions].
 					button.btn.btn-secondary.btn-block(type="submit") Create Account
 		.register-cta
 			p
 				a(href='/login') Log In
+	.modal.fade#terms(tabindex='-1' role='dialog' aria-labelledby='filterTitle' aria-hidden='true')
+		.modal-dialog(role='document')
+			.modal-content
+				.modal-header
+					h5.modal-title#termsTitle Terms & Conditions
+					button(type='button' class='close' data-dismiss='modal' aria-label='Close')
+						span(aria-hidden='true') &times;
+				.modal-body
+					p We're going to be super honest here. By signing up for Frustrations Journal, you're giving us your email address. We are going to use this email address for necessary account communications and some marketing stuff as well. We definitely do not sell your email address to anyone. By signing up for Frustrations Journal, you're giving us the right to send you some emails. 
