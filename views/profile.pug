@@ -1,10 +1,11 @@
 extends layout
 
 block content
-	.container
-		h1.mt-4= title
+	.container-fluid
+		.journal-header.d-flex.flex-row.justify-content-between
+			h1 My Profile
 		!= messages()
-		.card.login.shadow.mb-4.mt-2
+		.card.shadow.m-3
 			.card-body
 				h5.card-title Change Email
 				form(method='post', action='/profile/change-email')
@@ -18,7 +19,7 @@ block content
 							error in errors
 								.small.text-danger= message
 					button.btn.btn-primary(type='submit') Change Email
-		.card.login.shadow
+		.card.shadow.m-3
 			.card-body
 				h5.card-title Change Password
 				form(method='post', action='/profile/change-password')
@@ -35,3 +36,6 @@ block content
 						if error_type == 'password_match'
 							.small.text-danger= message
 					button.btn.btn-primary(type='submit') Change Password
+		form(method='get', action='/logout')
+			.logout.d-flex.justify-content-center
+				button.btn.btn-link(type="submit") Log Out

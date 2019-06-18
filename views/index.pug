@@ -3,40 +3,43 @@ extends layout
 block content
 	section.hero-section
 		.hero-section-copy
-			h1.display-2 Are you ready to create ideas that come to life? 
+			h1= title
+			.subtitle-large Catalog your frustrations. Change your world. Frustrations Journal is designed to help you recognize opportunities to create solutions to the common problems all around you. And it all starts with an idea. 
+			a.btn.btn-secondary(href="/login") Log In
+			a.btn.btn-secondary(href='/register') Sign Up
 			//.subtitle-large #{title} is where your ideas come to life.
 			//a.btn.btn-primary.mt-3(href='/register') Create Your Journal
 		
-	section.login-section
-		.card.shadow
-			.card-body
-				h5.card-title What is #{title}?
-				p.card-text Have you ever thought that just having the <em>right</em> idea could make all the difference? Today's most successful people observe problems in everyday life and commit their time to solving them. Rather than struggling to invent the <em>right</em> idea, start tracking the problems you encounter every day. Then, solve them.
-				a.btn.btn-primary.mr-2(href='/register') Register
-				a.btn.btn-outline-primary(href='/login') Log In 
+	// section.login-section
+	// 	.card.shadow
+	// 		.card-body
+	// 			h5.card-title What is #{title}?
+	// 			p.card-text Have you ever thought that just having the <em>right</em> idea could make all the difference? Today's most successful people observe problems in everyday life and commit their time to solving them. Rather than struggling to invent the <em>right</em> idea, start tracking the problems you encounter every day. Then, solve them.
+	// 			a.btn.btn-primary.mr-2(href='/register') Register
+	// 			a.btn.btn-outline-primary(href='/login') Log In 
 
 
 	section.about-section
 		.about-section-copy
-			h5 How does #{title} work?
+			h2 How does #{title} work?
 		.row.m-4
 			.col-md-4
 				.card.shadow.mb-2
 					.card-body
 						i.mb-2(data-feather='eye')
-						h6.card-title Observe your world
+						h5.card-title Observe your world
 						p.card-text Great ideas begin when you start looking at the world around you. What's something that nags at your persistently? What are people around you complaining about? 
 			.col-md-4
 				.card.shadow.mb-2
 					.card-body
 						i.mb-2(data-feather='edit')
-						h6.card-title Create a log
+						h5.card-title Create a log
 						p.card-text If you don't walk around with a pen and paper, it can be tough to remember your great ideas. With #{title}, your next entry is one tap away.
 			.col-md-4
 				.card.shadow.mb-2
 					.card-body
 						i.mb-2(data-feather='send')
-						h6.card-title Just start doing
+						h5.card-title Just start doing
 						p.card-text We started #{title} because we were tired of not putting our energy toward doing something. Review your journal and do something about it.
 
 

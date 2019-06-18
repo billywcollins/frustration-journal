@@ -1,21 +1,38 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, SF Pro Display, Roboto, Helvetica Neue, sans-serif;
+  font-family: SF Pro Display, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .container-fluid {
-	padding: 0 0 5rem 0 !important;
+	padding: 0 !important;
 }
+
+.journal-container{
+	padding: 0 0 4rem 0 !important;
+} 
 
 /*** FONTS ***/
 
 h1, h2, h3, h4, h5, h6, p {
-	font-family: -apple-system, BlinkMacSystemFont, SF Pro Display, Roboto, Helvetica Neue, sans-serif;
+	font-family: SF Pro Display, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
-h1.display-2 {
-	font-weight: 600;
+h1, h2 {
+	font-weight: 300;
+	/* margin-top: 3rem; */
+}
+
+h3, h4, h5, h6 {
+	font-weight: 700;
+}
+
+p {
+	font-weight: 300;
+}
+
+.hero-section-copy h1 {
+	color: #ffffff;
 }
 
 /*h1, h2 {
@@ -109,6 +126,12 @@ a:hover {
 	font-size: 12px;
 }
 
+.journal-header {
+	padding: 0 18px 8px 18px;
+	border-bottom: solid 1px #b2b2b2;
+	background-color: #f9f9f8;
+}
+
 .btn-fab {
 	width: 56px;
 	height: 56px;
@@ -119,7 +142,8 @@ a:hover {
 	position: fixed;
 	bottom: 4.5rem;
 	right: 1rem;
-	padding: 1rem;
+	padding: .85rem 1rem 1rem 1rem;
+	border-width: 0 !important;
 }
 
 .btn-fab-support {
@@ -188,7 +212,7 @@ ul.success li {
 
 /** MENU **/
 
-.navbar {
+.navbar-touch {
 	padding: 0 !important;
 }
 
@@ -205,7 +229,21 @@ ul.success li {
 	margin: 0 1rem;
 }
 
+.navbar-toggler {
+	border:none !important;
+}
+
 /**** HOME PAGE ****/
+
+.hero-section-copy .subtitle-large {
+	margin: 2rem 0 1rem 0;
+}
+
+.hero-section-copy .btn {
+	min-width: 150px;
+	margin: 1rem 2rem;
+
+}
 
 /*Tablet and larger*/
 
@@ -213,10 +251,13 @@ ul.success li {
 /*section backgrounds*/
 
 .hero-section {
-	background: #000000 url("../images/background-1.jpeg") no-repeat right bottom;
-	background-size: cover;
+	/*background: #000000 url("../images/background-1.jpeg") no-repeat right bottom;*/
+	/*background: #000000 url("../images/login-background.jpeg") no-repeat left bottom;*/
+	background-color: #343a40;
+	/*background-size: cover;*/
 	padding: 7rem 0 3rem;
 	height:70vh;
+	text-align: center;
 }
 
 .login-page-section {
@@ -241,9 +282,10 @@ ul.success li {
 }
 
 .about-section {
-	background: #ECE9E6;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	/*background: #ECE9E6; 
+	background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);   Chrome 10-25, Safari 5.1-6 
+	background: linear-gradient(to right, #FFFFFF, #ECE9E6); */
+	background: #ffffff url("../images/memphis-mini.png") repeat;
 	padding: 6rem 0;
 }
 
@@ -289,27 +331,34 @@ button:hover {
 	min-width: 95vw !important;
 }
 
+.card-columns {
+	padding: 12px 18px 0 18px;
+}
+
 /* control column display on modile devices */
 
 @media screen and (max-width: 576px) {
 
 	.card-columns {
-		column-count: 2;
+		column-count: 1;
 	}
 
 	.card-columns .card {
 		display: inline-block !important;
+		width: 100%;
 	}
 
-	.entry-description, .entry-idea {
+	.entry-description, .overline {
 		display: none;
 	}
 }
 
 @media screen and (min-width: 768px) {
 	.hero-section {
-		background: #000000 url("../images/background-1.jpeg") no-repeat right bottom;
-		background-size: cover;
+		/*background: #000000 url("../images/background-1.jpeg") no-repeat right bottom;
+		background-size: cover;*/
+		background-color: #343a40;
+
 	}
 
 	.login-page-section {
@@ -324,12 +373,12 @@ button:hover {
 
 	.hero-section, .login-page-section, .register-section {
 		padding: 7rem 0 3rem;
-		height: 100vh;
+		height: 70vh;
 	}
 
 	.hero-section-copy {
 		width:60vw;
-		margin: 8rem 0 0 6rem;
+		margin: 2rem auto;
 	}
 
 	.hero-section-copy .btn {

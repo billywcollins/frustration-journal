@@ -1,9 +1,9 @@
 extends layout
 
 block content
-	.container
+	.container-fluid.journal-container
 		.journal-header.d-flex.flex-row.justify-content-between
-			h1.mt-4 My Journal
+			h1 My Journal
 			button.btn-filter.mt-3(aria-label='Filter' data-toggle='modal' data-target='#filter')
 				i(data-feather='more-vertical' width='20' height='20')
 		!= messages()
@@ -22,9 +22,11 @@ block content
 							.entry-idea.body-text-small.mb-3= entry.idea
 							.card-link 
 								a.text-button.btn-link.btn(href=entry.url) More Details
-			a(href='/add-entry')
-				.btn-fab.shadow
-					i(data-feather='plus')
+			// a(href='/add-entry')
+			// 	.btn-fab.shadow
+			// 		i(data-feather='plus')
+			button.btn-fab.shadow(aria-label='Add Journal Item' data-toggle='modal' data-target='#addItem')
+				i(data-feather='plus')
 
 			//button.btn-fab-support.shadow(aria-label='Filter' data-toggle='modal' data-target='#filter')
 			//	i(data-feather='filter' width='20' height='20')
@@ -32,6 +34,70 @@ block content
 		else
 			p.about-text #{title} was created to help you turn your daily frustrations into ideas, solutions, and maybe even companies. Today's most innovative companies started because of a frustration some motivated person noticed in their world. Instead of ranting and raving, that person cataloged their frustration and came up with a way to solve the problem. It starts with a single entry. Ready to go?
 			a.btn.btn-primary.mt-3(href='/add-entry') Add First Entry
+
+		.modal.fade#addItem(tabindex='-1' role='dialog' aria-labelledby='addItemTitle' aria-hidden='true')
+			.modal-dialog(role='document')
+				.modal-content
+					.modal-header
+						h5.modal-title#faddItemTitle Add a Journal Entry
+						button(type='button' class='close' data-dismiss='modal' aria-label='Close')
+							span(aria-hidden='true') &times;
+					.modal-body
+						form(method='post', action='/')
+							.form-group
+								label Category
+								.input-group
+									select.custom-select(name='category' required)
+										option
+										each category in categories
+											option(value=category._id)= category.name
+									.input-group-append
+										button.btn.btn-outline-secondary(type='button' data-toggle='modal' data-target='#addCategory')
+											i(data-feather='plus' height='20' width='20')
+								if errors
+										each error in errors
+											if error.param == 'category'
+												.small.text-danger= error.msg
+							.form-group
+								label Title
+								input.form-control#title(type='text' name='title' required placeholder='Enter a Title')
+								if errors
+									each error in errors
+										if error.param == 'title'
+											.small.text-danger= error.msg
+							.form-group
+								label Location
+								input.form-control(type='text' name='location' required placeholder='Where did this happen?')
+								if errors
+										each error in errors
+											if error.param == 'location'
+												.small.text-danger= error.msg
+							.form-group
+								label Description
+								textarea.form-control(type='text' name='description' rows='3' required placeholder='Describe your frustration')
+								if errors
+										each error in errors
+											if error.param == 'description'
+												.small.text-danger= error.msg
+							.form-group
+								label Idea
+								textarea.form-control(type='text' name='idea' rows='3' required placeholder='Any solutions?')
+								if errors
+										each error in errors
+											if error.param == 'idea'
+												.small.text-danger= error.msg
+							.form-group
+								label How frustrating?
+								select.form-control(name='size' required)
+									option
+									option A little
+									option Somewhat
+									option Very
+								if errors
+										each error in errors
+											if error.param == 'size'
+												.small.text-danger= error.msg
+							button.btn.btn-primary.mt-3(type='submit') Add Entry
 
 		.modal.fade#filter(tabindex='-1' role='dialog' aria-labelledby='filterTitle' aria-hidden='true')
 			.modal-dialog(role='document')

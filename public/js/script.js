@@ -49,8 +49,46 @@ function showSomeModal() {
 }
 
 $(document).ready(function(){
-	$("#showSomeModal").click(function(){
-		$("#entryModal").modal();
-	});
-});
+	// $("#showSomeModal").click(function(){
+	// 	$("#entryModal").modal();
+	// });
 
+	$("#addEntryForm").submit(function(e) {
+		// get the form data
+		var formData = {
+			'title': $('input[name=title]').val(),
+			'location': $('input[name=location]').val(),
+			'description': $('textarea[name=description]').val(),
+			'idea': $('textarea[name=idea]').val(),
+			'category': $('select[name=category]').val(),
+			'size': $('select[name=size]').val(),
+		};
+
+		// process the form
+
+		$.ajax({
+			type: 'POST',
+			url: '/',
+			data: formData,
+			dataType: 'json',
+			encode: true
+		}).done(function(data) {
+			console.log(data);
+			console.log('is this even getting logged')
+			if (data.errors) {
+				alert('There was an error');
+				for(error in errors) {
+					if(error.param == 'category')
+						console.log('there was a category error')
+						$('#category').append('<div class="small text-danger">' + error.msg + '</div>');
+				}
+			} else {
+				alert('Good submission');
+				window.location = '/journal';
+			}
+		});
+
+		e.preventDefault();
+
+	})
+});
