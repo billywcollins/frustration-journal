@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@material/fab": "^0.43.0",
-    "async": "^2.6.1",
+    "async": "^2.6.4",
     "bcryptjs": "*",
     "connect-flash": "*",
     "connect-mongo": "^2.0.3",
